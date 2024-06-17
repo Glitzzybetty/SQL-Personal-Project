@@ -1,4 +1,4 @@
-<h1>Case Study #1 - Analyze Data in a Model Car Database with MySQL Workbench</h1>
+<h1>Case Study #1 - Analyze Data in a Model Car Database </h1>
 <h1>Contents</h1>
 <ul>
   <li><a href="#introduction">Introduction</a></li>
