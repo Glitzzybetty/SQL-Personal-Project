@@ -26,5 +26,6 @@ To support a data-based business decision, they are looking for suggestions and 
 <h2><a name="database">Database Information</a></h1>
 <p>The Database for this project was initially configured to MySQL pattern, I had to convert it to MSSQL pattern. Rewrote the table creations, and the data insertions with the order datails containing more that 1000 rows. I used partly AI prompting as additional assistance for ideas. It was QED.</p>
 
-![image](https://github.com/Glitzzybetty/SQL-Project/assets/130115684/12a70be1-c8e7-47b4-8b95-46daa094fffd)
-MintDB Entity Relationship Diagram ERD
+![image](https://github.com/Glitzzybetty/SQL-Project/assets/130115684/9ca464ac-982a-4d77-80a4-c1077fce2570)
+
+Mint Classic Entity Relationship Diagram (ERD)
