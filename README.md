@@ -4,7 +4,7 @@
   <li><a href="#introduction">Introduction</a></li>
   <li><a href="#problemstatement">Project Scenerio</a></li>
   <li><a href="#objective">Project Objective</a></li>
-  <li><a href="#Database">Database Information</a></li>
+  <li><a href="#database">Database Information</a></li>
   <li><a href="#casestudyquestionsandsolutions">Case Study Questions & Solutions</a></li>
   <li><a href="#bonusquestionsandsolutions">Bonus Questions & Solutions</a></li>
   <li><a href="#keyinsights">Key Insights</a></li>
@@ -23,5 +23,5 @@ To support a data-based business decision, they are looking for suggestions and 
 2. Determine important factors that may influence inventory reorganization/reduction.
 3. Provide analytic insights and data-driven recommendations.</p>
 
-<h1><a name="Database">Database Information</a></h1>
-The Database for this project was initially configured to MySQL pattern, I had to convert it to MSSQL pattern. Rewrote the table creations, and the data insertions with the order datails containing more that 1000 rows. I used partly AI prompting as additional assistance for ideas. It was QED.
+<h1><a name="database">Database Information</a></h1>
+<p>The Database for this project was initially configured to MySQL pattern, I had to convert it to MSSQL pattern. Rewrote the table creations, and the data insertions with the order datails containing more that 1000 rows. I used partly AI prompting as additional assistance for ideas. It was QED.</p>
