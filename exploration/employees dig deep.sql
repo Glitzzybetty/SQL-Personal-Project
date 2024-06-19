@@ -1,3 +1,4 @@
+-- We have seen top customers location, how about where employees are larger, does this have some impact on customer numbers
 SELECT 
     e1.jobTitle,
     COUNT(e1.employeeNumber) AS EmployeeCount,
