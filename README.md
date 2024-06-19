@@ -28,3 +28,30 @@ To support a data-based business decision, they are looking for suggestions and 
 Mint Classic Entity Relationship Diagram (ERD)
 <img width="500" alt='MintDB ERD' src= "https://github.com/Glitzzybetty/SQL-Project/assets/130115684/9ca464ac-982a-4d77-80a4-c1077fce2570">
 
+<h1><a name="casestudyquestionsandsolutions">Exploring to under some Business Dmographic Information</a></h1>
+<p>It is very important to find out out business demography, customer segments, doing some background checks before attemping to fix underlying problems.</p>
+<ol>
+
+  <li><h5>Where are the top five customers aggregations located</h5></li>
+	
+```sql
+-- Top 5 Countries of Mint Classic customers
+select top 5
+country, 
+count(customerNumber) as [Number of Customers],
+round(avg(creditLimit),0) as [Average Credit Limit]
+from [mintclassics].[dbo].[customers]
+group by country 
+order by count(customerNumber) desc
+```
+<h6>Answer:</h6>
+<img width="200" alt="Top 5 customers information" src="https://github.com/Glitzzybetty/SQL-Project/assets/130115684/5bb358a7-bae7-4cc0-9e61-bd9c633ce4ce">
+<ul>
+  <li>The SQL query retrieves the <code>customerNumber</code> shows their <code>country</code> of residents and calculates the average (<code>creditLimit</code>) in each country group they belong to.</li>
+  <li>It presents data from the <code>scustomers</code>
+  <li>The results are grouped by top 5 <code>country</code>.</li>
+  <li>The query then calculates the average <code>creditlimit</code> for each group of customers with the same <code>country</code>.</li>
+  <li>Finally, the results are sorted in descending order based on the <code>customerNumber</code> aggregation.</li>
+</ul>
+</ol>
+
