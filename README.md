@@ -28,7 +28,7 @@ To support a data-based business decision, they are looking for suggestions and 
 Mint Classic Entity Relationship Diagram (ERD)
 <img width="500" alt='MintDB ERD' src= "https://github.com/Glitzzybetty/SQL-Project/assets/130115684/9ca464ac-982a-4d77-80a4-c1077fce2570">
 
-<h1><a name="casestudyquestionsandsolutions">Exploring to under some Business Dmographic Information</a></h1>
+<h1><a name="casestudyquestionsandsolutions">Exploring to under some Business Demographic Information</a></h1>
 <p>It is very important to find out out business demography, customer segments, doing some background checks before attemping to fix underlying problems.</p>
 <ol>
 
