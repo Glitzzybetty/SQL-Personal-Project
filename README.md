@@ -48,10 +48,54 @@ order by count(customerNumber) desc
 <img width="200" alt="Top 5 customers information" src="https://github.com/Glitzzybetty/SQL-Project/assets/130115684/5bb358a7-bae7-4cc0-9e61-bd9c633ce4ce">
 <ul>
   <li>The SQL query retrieves the <code>customerNumber</code> shows their <code>country</code> of residents and calculates the average (<code>creditLimit</code>) in each country group they belong to.</li>
-  <li>It presents data from the <code>scustomers</code>
+  <li>It presents data from the <code>customers</code> table.
   <li>The results are grouped by top 5 <code>country</code>.</li>
   <li>The query then calculates the average <code>creditlimit</code> for each group of customers with the same <code>country</code>.</li>
   <li>Finally, the results are sorted in descending order based on the <code>customerNumber</code> aggregation.</li>
+	<li>The findings here shows that there are more customers in the USA</li>
+</ul>
+
+<li><h5>Explain MintClassic Employees hierarchy, and their aggregation per location </h5></li>
+	
+```sql
+SELECT 
+    e1.jobTitle,
+    COUNT(e1.employeeNumber) AS EmployeeCount,
+    COALESCE(
+        CONCAT(e2.firstName, ' ', e2.lastName),
+        'No one' -- This will show 'No one' for the President
+    ) AS [Report to Person],
+
+	COALESCE(
+        e2.jobTitle,
+        'No one' -- This will show 'No one' for the President
+    ) AS [Report To Person Job Title],
+	COALESCE(
+        o.[country],
+        'No one' -- This will show 'No one' for the President
+    ) AS [Report To Person Country]
+FROM 
+    [mintclassics].[dbo].[employees] e1
+LEFT JOIN 
+    [mintclassics].[dbo].[employees] e2 ON e1.reportsTo = e2.employeeNumber
+JOIN 
+    [mintclassics].[dbo].[offices] o ON  e2.officeCode = o.officeCode
+GROUP BY 
+    e1.jobTitle,
+	e2.jobTitle,
+    e2.firstName, 
+    e2.lastName,
+	 o.[country]
+ORDER BY 
+    EmployeeCount DESC;
+```
+<h6>Answer:</h6>
+<img width="200" alt="Employee Hierarchy and aggregation per location" src="https://github.com/Glitzzybetty/SQL-Project/assets/130115684/1b7f75cb-bee4-4620-9b29-d5493c971f55">
+<ul>
+  <li>The SQL query retrieves the <code>JobTitle</code> of Employees, shows the count of<code>EmployeeNumber</code> in that position and the report to person, their jobtitle and their <code>country</code>.</li>
+  <li>It presents data from the <code>Employees</code> table, self joins to get report to person and joins with <code>officecode</code> to get the <code>country</code> i.e. location of these staffs.
+  <li>The results are grouped by top 5 <code>jobTitle</code> <code>names</code> and <code>country</code>.</li>
+  <li>The findings points out that majority of employees were from USA, pointing out the reasons their customers to the largest in US. Also, it was discovered one employee who is a sales rep rports to another sales rep in Japan, some questions needs to be asked the stakeholders, especially the VP sales.</li>
 </ul>
 </ol>
 
