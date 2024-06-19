@@ -95,7 +95,7 @@ ORDER BY
   <li>The SQL query retrieves the <code>JobTitle</code> of Employees, shows the count of<code>EmployeeNumber</code> in that position and the report to person, their jobtitle and their <code>country</code>.</li>
   <li>It presents data from the <code>Employees</code> table, self joins to get report to person and joins with <code>officecode</code> to get the <code>country</code> i.e. location of these staffs.
   <li>The results are grouped by top 5 <code>jobTitle</code> <code>names</code> and <code>country</code>.</li>
-  <li>The findings points out that majority of employees were from USA, pointing out the reasons their customers to the largest in US. Also, it was discovered one employee who is a sales rep rports to another sales rep in Japan, some questions needs to be asked the stakeholders, especially the VP sales.</li>
+  <li>The findings points out that majority of employees were from USA, pointing out the reasons more customers are the largest in US. Also, it was discovered one employee who is a sales rep reports to another sales rep in Japan, some questions needs to be asked the stakeholders, especially the VP sales.</li>
 </ul>
 </ol>
 
