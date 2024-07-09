@@ -46,7 +46,7 @@ group by country
 order by count(customerNumber) desc
 ```
 <h6>Answer:</h6>
-<img width="200" alt="Top 5 customers information" src="https://github.com/Glitzzybetty/SQL-Project/assets/130115684/5bb358a7-bae7-4cc0-9e61-bd9c633ce4ce">
+<img width="500" alt="Top 5 customers information" src="https://github.com/Glitzzybetty/SQL-Project/assets/130115684/5bb358a7-bae7-4cc0-9e61-bd9c633ce4ce">
 <ul>
   <li>The SQL query retrieves the <code>customerNumber</code> shows their <code>country</code> of residents and calculates the average (<code>creditLimit</code>) in each country group they belong to.</li>
   <li>It presents data from the <code>customers</code> table.
@@ -91,7 +91,7 @@ ORDER BY
     EmployeeCount DESC;
 ```
 <h6>Answer:</h6>
-<img width="200" alt="Employee Hierarchy and aggregation per location" src="https://github.com/Glitzzybetty/SQL-Project/assets/130115684/1b7f75cb-bee4-4620-9b29-d5493c971f55">
+<img width="500" alt="Employee Hierarchy and aggregation per location" src="https://github.com/Glitzzybetty/SQL-Project/assets/130115684/1b7f75cb-bee4-4620-9b29-d5493c971f55">
 <ul>
   <li>The SQL query retrieves the <code>JobTitle</code> of Employees, shows the count of<code>EmployeeNumber</code> in that position and the report to person, their jobtitle and their <code>country</code>.</li>
   <li>It presents data from the <code>Employees</code> table, self joins to get report to person and joins with <code>officecode</code> to get the <code>country</code> i.e. location of these staffs.
