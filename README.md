@@ -19,7 +19,7 @@ To support a data-based business decision, they are looking for suggestions and 
 
 <h2><a name="objective">Project Objective</a></h1>
 <p>
-1. Explore products currently in inventory.
+<ul>1. Explore products currently in inventory.</ul>
 2. Determine important factors that may influence inventory reorganization/reduction.
 3. Provide analytic insights and data-driven recommendations.</p>
 
