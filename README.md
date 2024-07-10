@@ -150,9 +150,6 @@ ORDER BY
  <li><h5> Are all the warehouses currently in use still necessary? How can we review warehouses with low or inactive inventory? </h5></li>
 	
 ```sql
-/**2. Are all the warehouses currently in use still necessary? 
-How can we review warehouses with low or inactive inventory?
-**/
 WITH warehouse_inventory AS (
     SELECT 
         w.warehouseCode, 
@@ -198,12 +195,39 @@ FROM
 <li>Suggests overstocking, higher holding costs, and potential obsolescence.</li>
 <li>May indicate that inventory is not turning over quickly enough, leading to inefficiency.</li>
 <li> Highest ITR Indicates high inventory turnover.</li>
-
+</ul>
 <h4>Optimisation Strategy</h4>
-<P>To Increase ITR and reduce SSR:</P>
+<p>To Increase ITR and reduce SSR:</p>
 <li> Offer incentives or discounts to move excess inventory.</li>
 <li>Slow down or temporarily halt new inventory orders until sales catch up with existing stock.</li>
 <li>Analyze the reasons for low sales, such as product relevance, competition, or market demand, and take corrective actions.</li>
+</ul>
+
+<li><h5> Is there a relationship between product prices and their sales levels?  How can price adjustments impact sales?  </h5></li>
+	
+```sql
+SELECT Top 10
+    p.productCode, 
+    p.productName, 
+    p.MSRP, cast(round(Avg(od.priceEach), 2) as float) as avgPriceSold,
+	Avg(od.priceEach) - p.MSRP as [Price Diff],
+    SUM(od.quantityOrdered) AS totalQuantitySold
+FROM 
+    products p
+JOIN 
+    orderdetails od ON p.productCode = od.productCode
+GROUP BY 
+    p.productCode, p.productName, p.MSRP
+ORDER BY 
+    SUM(od.quantityOrdered) desc;
+
+```
+<h6>Answer 3:</h6>
+<img width="500" alt="Inventory vs Order" src="https://github.com/Glitzzybetty/SQL-Project/assets/130115684/3e415d16-cfe7-40a0-b726-c9ab91361e01">
+<ul>
+<li>This query examines the relationship between product prices (MSRP) i.e. Manufacturer suggested Retail Price and sales volumes.</li>
+<li>By analyzing the output, the company can identify if higher prices correspond to lower sales and</li>
+<li>consider price adjustments to optimize sales volumes.</li>
 </ul>
 </ol>
 
