@@ -132,7 +132,7 @@ FROM
 ORDER BY 
     StockToSalesRatio DESC;
 ```
-<h6>Answer 2:</h6>
+<h6>Answer 1:</h6>
 <img width="500" alt="Inventory vs Order" src="https://github.com/Glitzzybetty/SQL-Project/assets/130115684/8762c528-af8e-4efd-939a-20c12a740134">
 <ul>
 <li>The SQL uses <h4> CTE i.e. common Table Expression(product_sales):</h4></li>
@@ -145,6 +145,65 @@ ORDER BY
 <li>Inventory Turnover Ratio (ITR): Measures how often inventory is sold and replaced over a period. A higher ITR indicates better performance.</li>
 <li>Stock to Sales Ratio (SSR): Compares average inventory to sales. A higher SSR suggests overstocking and potential inefficiencies.</li>
 <li>This script identifies products with high inventory but low sales and provide a basis for optimization strategies like targeted promotions, inventory reduction, or restocking adjustments.</li>
+</ul>
+
+ <li><h5> Are all the warehouses currently in use still necessary? How can we review warehouses with low or inactive inventory? </h5></li>
+	
+```sql
+/**2. Are all the warehouses currently in use still necessary? 
+How can we review warehouses with low or inactive inventory?
+**/
+WITH warehouse_inventory AS (
+    SELECT 
+        w.warehouseCode, 
+        w.warehouseName, 
+		COUNT(DISTINCT o.customerNumber) AS [Number of Active Customers],
+        SUM(p.quantityInStock) AS totalInventory,
+		ISNULL(SUM(od.quantityOrdered), 0) AS totalQuantityOrdered,
+        ISNULL(SUM(od.quantityOrdered * od.priceEach) / NULLIF(AVG(p.quantityInStock), 0), 1) AS InventoryTurnOverRatio,
+        ISNULL(AVG(p.quantityInStock) / NULLIF(SUM(od.quantityOrdered * od.priceEach), 0), 1) AS StockToSalesRatio
+    FROM 
+        warehouses w
+    LEFT JOIN 
+        products p ON w.warehouseCode = p.warehouseCode
+	LEFT JOIN orderdetails od ON p.productCode = od.productCode
+	LEFT JOIN orders o ON od.orderNumber = o.orderNumber
+    GROUP BY 
+        w.warehouseCode, w.warehouseName--, p.quantityInStock, p.MSRP
+)
+SELECT 
+    warehouseCode, 
+    warehouseName, 
+	[Number of Active Customers],
+    totalInventory,
+	totalQuantityOrdered,
+	round(cast(InventoryTurnOverRatio as float), 2) as InventoryTurnOverRatio,
+	round(cast(StockToSalesRatio as float),4) as StockToSalesRatio
+FROM 
+    warehouse_inventory
+--WHERE 
+  --  totalInventory < 50;
+  ORDER BY StockToSalesRatio DESC;
+```
+<h6>Answer 2:</h6>
+<img width="500" alt="Inventory vs Order" src="https://github.com/Glitzzybetty/SQL-Project/assets/130115684/42a8be54-a5a9-4949-8840-723736057ae3">
+<ul>
+<li>The SQL uses <h4> CTE i.e. common Table Expression(warehouse_inventory):</h4></li>
+<li>Calculates <code>totalQuantityOrdered</code>, <code>InventoryTurnOverRatio</code>, and <code>StockToSalesRatio</code>.</li>
+<h4>Main Query:</h4>
+<li>Selects <code>warehouseName</code>, <code>Number of Active Customers</code>, <code>totalInventory</code>.</l1>
+<li>Orders the results by <code>StockToSalesRatio</code> in descending order to highlight warehouses with high inventory relative to sales.</li> 
+<h4>Comments on Key Metrics:</h4>
+<li>Highest SSR on the list implies a high amount of inventory relative to sales.</li>
+<li>Suggests overstocking, higher holding costs, and potential obsolescence.</li>
+<li>May indicate that inventory is not turning over quickly enough, leading to inefficiency.</li>
+<li> Highest ITR Indicates high inventory turnover.</li>
+
+<h4>Optimisation Strategy</h4>
+<P>To Increase ITR and reduce SSR:</P>
+<li> Offer incentives or discounts to move excess inventory.</li>
+<li>Slow down or temporarily halt new inventory orders until sales catch up with existing stock.</li>
+<li>Analyze the reasons for low sales, such as product relevance, competition, or market demand, and take corrective actions.</li>
 </ul>
 </ol>
 
