@@ -135,12 +135,16 @@ ORDER BY
 <h6>Answer 2:</h6>
 <img width="500" alt="Inventory vs Order" src="https://github.com/Glitzzybetty/SQL-Project/assets/130115684/8762c528-af8e-4efd-939a-20c12a740134">
 <ul>
-  <li>The SQL uses <h4> CTE i.e. common Table Expression(product_sales):</h4></li>
-<li>Calculates totalQuantitySold, InventoryTurnOverRatio, and StockToSalesRatio.</li>
+<li>The SQL uses <h4> CTE i.e. common Table Expression(product_sales):</h4></li>
+<li>Calculates <code>totalQuantitySold</code>, <code>InventoryTurnOverRatio</code>, and <code>StockToSalesRatio</code>.</li>
 <li>Uses ISNULL and NULLIF to handle division by zero errors.</li>
- <li><h4>Main Query:</h4></li>
-<li>Selects the top 10 products by StockToSalesRatio.</l1>
-<li>Orders the results by StockToSalesRatio in descending order to highlight products with high inventory relative to sales.</li> 
+<h4>Main Query:</h4>
+<li>Selects the top 10 products by <code>StockToSalesRatio</code>.</l1>
+<li>Orders the results by <code>StockToSalesRatio</code> in descending order to highlight products with high inventory relative to sales.</li> 
+<h4>Comments on Key Metrics:</h4>
+<li>Inventory Turnover Ratio (ITR): Measures how often inventory is sold and replaced over a period. A higher ITR indicates better performance.</li>
+<li>Stock to Sales Ratio (SSR): Compares average inventory to sales. A higher SSR suggests overstocking and potential inefficiencies.</li>
+<li>This script should help identify products with high inventory but low sales and provide a basis for optimization strategies like targeted promotions, inventory reduction, or restocking adjustments.</li>
 </ul>
 </ol>
 
