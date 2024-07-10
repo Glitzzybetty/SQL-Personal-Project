@@ -98,11 +98,11 @@ ORDER BY
   <li>The results are grouped by top 5 <code>jobTitle</code> <code>names</code> and <code>country</code>.</li>
   <li>The findings points out that majority of employees were from USA, pointing out the reasons more customers are the largest in US. Also, it was discovered one employee who is a sales rep reports to another sales rep in Japan, some questions needs to be asked the stakeholders, especially the VP sales.</li>
 </ul>
-
+</ol>
 <h1><a name="casestudyquestionsandsolutions">Advance Questions</a></h1>
 <p>Critical Question are being asked to reveal Business problems, so that solution can be readily presented</p>
-
-  <li><h5>1. Are there products with high inventory but low sales? How can we optimize the inventory of these products? </h5></li>
+<ol>
+  <li><h5> Are there products with high inventory but low sales? How can we optimize the inventory of these products? </h5></li>
 	
 ```sql
 WITH product_sales AS (
@@ -144,7 +144,7 @@ ORDER BY
 <h4>Comments on Key Metrics:</h4>
 <li>Inventory Turnover Ratio (ITR): Measures how often inventory is sold and replaced over a period. A higher ITR indicates better performance.</li>
 <li>Stock to Sales Ratio (SSR): Compares average inventory to sales. A higher SSR suggests overstocking and potential inefficiencies.</li>
-<li>This script should help identify products with high inventory but low sales and provide a basis for optimization strategies like targeted promotions, inventory reduction, or restocking adjustments.</li>
+<li>This script identifies products with high inventory but low sales and provide a basis for optimization strategies like targeted promotions, inventory reduction, or restocking adjustments.</li>
 </ul>
 </ol>
 
