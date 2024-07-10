@@ -29,7 +29,7 @@ To support a data-based business decision, they are looking for suggestions and 
 Mint Classic Entity Relationship Diagram (ERD)
 <img width="500" alt='MintDB ERD' src= "https://github.com/Glitzzybetty/SQL-Project/assets/130115684/9ca464ac-982a-4d77-80a4-c1077fce2570">
 
-<h1><a name="casestudyquestionsandsolutions">Exploring to under some Business Demographic Information</a></h1>
+<h1><a name="casestudyquestionsandsolutions">Exploring to understand some Business Demographic Information</a></h1>
 <p>It is very important to find out out business demography, customer segments, doing some background checks before attemping to fix underlying problems.</p>
 <ol>
 
@@ -97,6 +97,50 @@ ORDER BY
   <li>It presents data from the <code>Employees</code> table, self joins to get report to person and joins with <code>officecode</code> to get the <code>country</code> i.e. location of these staffs.
   <li>The results are grouped by top 5 <code>jobTitle</code> <code>names</code> and <code>country</code>.</li>
   <li>The findings points out that majority of employees were from USA, pointing out the reasons more customers are the largest in US. Also, it was discovered one employee who is a sales rep reports to another sales rep in Japan, some questions needs to be asked the stakeholders, especially the VP sales.</li>
+</ul>
+
+<h1><a name="casestudyquestionsandsolutions">Advance Questions</a></h1>
+<p>Critical Question are being asked to reveal Business problems, so that solution can be readily presented</p>
+
+  <li><h5>1. Are there products with high inventory but low sales? How can we optimize the inventory of these products? </h5></li>
+	
+```sql
+WITH product_sales AS (
+    SELECT 
+        p.productCode, 
+        p.productName, 
+        p.quantityInStock,
+        ISNULL(SUM(od.quantityOrdered), 0) AS totalQuantitySold,
+        ISNULL(SUM(od.quantityOrdered * od.priceEach) / NULLIF(AVG(p.quantityInStock), 0), 1) AS InventoryTurnOverRatio,
+        ISNULL(AVG(p.quantityInStock) / NULLIF(SUM(od.quantityOrdered * od.priceEach), 0), 1) AS StockToSalesRatio
+    FROM 
+        products p
+    LEFT JOIN 
+        orderdetails od ON p.productCode = od.productCode
+    GROUP BY 
+        p.productCode, p.productName, p.quantityInStock, p.MSRP
+)
+SELECT TOP 10
+    productCode, 
+    productName, 
+    quantityInStock, 
+    totalQuantitySold,
+    InventoryTurnOverRatio, 
+    CAST(ROUND(StockToSalesRatio, 2) AS float) AS StockToSalesRatio
+FROM 
+    product_sales
+ORDER BY 
+    StockToSalesRatio DESC;
+```
+<h6>Answer 2:</h6>
+<img width="500" alt="Inventory vs Order" src="https://github.com/Glitzzybetty/SQL-Project/assets/130115684/8762c528-af8e-4efd-939a-20c12a740134">
+<ul>
+  <li>The SQL uses <h4> CTE i.e. common Table Expression(product_sales):</h4></li>
+<li>Calculates totalQuantitySold, InventoryTurnOverRatio, and StockToSalesRatio.</li>
+<li>Uses ISNULL and NULLIF to handle division by zero errors.</li>
+ <li><h4>Main Query:</h4></li>
+<li>Selects the top 10 products by StockToSalesRatio.</l1>
+<li>Orders the results by StockToSalesRatio in descending order to highlight products with high inventory relative to sales.</li> 
 </ul>
 </ol>
 
