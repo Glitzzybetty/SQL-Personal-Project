@@ -229,5 +229,32 @@ ORDER BY
 <li>By analyzing the output, the company can identify if higher prices correspond to lower sales and</li>
 <li>consider price adjustments to optimize sales volumes.</li>
 </ul>
+<li><h5> Who are the customers contributing the most to sales? How can we focus sales efforts on these valuable customers? </h5></li>
+	
+```sql
+SELECT TOP 10
+    c.customerNumber, 
+    c.customerName, 
+	c.[country],
+    SUM(od.quantityOrdered * p.MSRP) AS totalSales
+FROM 
+    customers c
+JOIN 
+    orders o ON c.customerNumber = o.customerNumber
+JOIN 
+    orderdetails od ON o.orderNumber = od.orderNumber
+JOIN 
+    products p ON od.productCode = p.productCode
+GROUP BY 
+    c.customerNumber, c.customerName, c.[country]
+ORDER BY 
+    totalSales DESC
+```
+<h6>Answer 4:</h6>
+<img width="500" alt="customer sales" src="https://github.com/Glitzzybetty/SQL-Project/assets/130115684/714c9501-93d3-4c39-9075-490dc4c1b55b">
+<ul>
+<li>This query identifies the top 10 customers by total sales.</li>
+<li>Focusing sales efforts on these valuable customers can involve personalized marketing strategies, loyalty programs, and enhanced customer service.</li>
+</ul>
 </ol>
 
