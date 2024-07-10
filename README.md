@@ -139,7 +139,7 @@ ORDER BY
 <li>Calculates <code>totalQuantitySold</code>, <code>InventoryTurnOverRatio</code>, and <code>StockToSalesRatio</code>.</li>
 <li>Uses ISNULL and NULLIF to handle division by zero errors.</li>
 <h4>Main Query:</h4>
-<li>Selects the top 10 products by <code>StockToSalesRatio</code>.</l1>
+<li>Selects the top 10 products by <code>StockToSalesRatio</code>.</li>
 <li>Orders the results by <code>StockToSalesRatio</code> in descending order to highlight products with high inventory relative to sales.</li> 
 <h4>Comments on Key Metrics:</h4>
 <li>Inventory Turnover Ratio (ITR): Measures how often inventory is sold and replaced over a period. A higher ITR indicates better performance.</li>
@@ -195,7 +195,6 @@ FROM
 <li>Suggests overstocking, higher holding costs, and potential obsolescence.</li>
 <li>May indicate that inventory is not turning over quickly enough, leading to inefficiency.</li>
 <li> Highest ITR Indicates high inventory turnover.</li>
-</ul>
 <h4>Optimisation Strategy</h4>
 <p>To Increase ITR and reduce SSR:</p>
 <li> Offer incentives or discounts to move excess inventory.</li>
