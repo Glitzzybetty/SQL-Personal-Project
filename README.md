@@ -1,4 +1,6 @@
 <h1>Case Study #1 - Analyze Data in a Model Car Database </h1>
+![image](https://github.com/Glitzzybetty/SQL-Personal-Project/assets/130115684/0ad017d9-ec71-4764-bddb-81eea66fd59f)
+
 <h1>Contents</h1>
 <ul>
   <li><a href="#introduction">Introduction</a></li>
